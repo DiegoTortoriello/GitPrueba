@@ -1,0 +1,45 @@
+apply plugin: "groovy"
+apply plugin: "eclipse"
+
+version = "1.0"
+description = "Cloud Taxcloud Tax"
+
+// Spock works with Java 1.5 and above
+sourceCompatibility = 1.8
+
+repositories {
+  // Spock releases are available from Maven Central
+  mavenCentral()
+  // Spock snapshots are available from the Sonatype OSS snapshot repository
+  maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+
+sourceSets {
+	
+	
+	main {
+		java {srcDirs =[]} 
+		groovy {srcDir "src"}
+	}
+	
+	test {
+		java {srcDirs =[]}
+		groovy {srcDir "tests"}
+	}
+	
+}
+
+dependencies {
+  // mandatory dependencies for using Spock
+  compile "org.codehaus.groovy:groovy-all:2.3.10"
+  testCompile "org.spockframework:spock-core:1.0-groovy-2.3"
+  testCompile "junit:junit:4.10"
+
+  //Harmcrest matchers
+  testCompile "org.hamcrest:hamcrest-core:1.3"
+
+  //RESTClient
+  testCompile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+}
+
